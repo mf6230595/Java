@@ -1,6 +1,7 @@
 # Java-
 个人记录的一些Java重点和一些笔记
-#String
+String
+----
 
 ```java
 public final class String
