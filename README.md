@@ -33,3 +33,44 @@ System.out.pringtf( s5 = s6 );      //true
 ```
 在java 7 之前，String Pool被放在运行时常量池中，它属于永久代；而在java 7，String Pool被移到堆（heap）中，这是因为永久代的空间有限，在大量使用字符串的场景下会导致OutOfMemoryError错误。  
 [深入解析String#intern](https://tech.meituan.com/2014/03/06/in-depth-understanding-string-intern.html)
+# equals
+Object常用方法  
+```java
+public boolean equals(Object obj)
+public native int hashCode()
+```
+equals()  
+1.等价关系  
+- 自反性  
+```java
+x.equals(x);        //true
+```
+- 对称性  
+```java
+x.equals(y) == y.equals(x);         //true
+```
+- 传递性  
+```java
+x.equals(y) && y.equals(z);
+x.equals(z);        //true
+```
+- 一致性  
+```java
+x.equals(y);     //true
+x.equals(y);     //true
+```
+- 与null比较  
+对任何不是null的对象调用equals结果都是false  
+```java
+x.equals(null);     //true
+```
+2.等价与相等  
+- 对于基本类型，==判断两个值是否相等，基本类型没有equals()方法  
+- 对于引用类型，==判断两个变量是否引用同一个对象；equals()判断引用的对象是否等价（即值是否相等）  
+```java
+Integer x == new Integer(1);
+Integer y == new Integer(1);
+System.out.println(x == y);         //false
+System.out.println(x.equals(y));        //true
+```
+x == y结果是false的原因就是x和y分别创建了两个不同的变量分别引用各自的对象；x.equals(y)的结果为true的原因就是x和y所引用的对象值都是1
