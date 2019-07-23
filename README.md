@@ -1,5 +1,5 @@
 # Java-
-个人记录的一些Java重点和一些笔记 ，参考（CyC2018的GitHub）[https://github.com/CyC2018/CS-Notes/blob/master/notes/Java%20%E5%9F%BA%E7%A1%80.md#%E9%9A%90%E5%BC%8F%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2]
+个人记录的一些Java重点和一些笔记 ，参考（CyC2018的GitHub）|[https://github.com/CyC2018/CS-Notes/blob/master/notes/Java%20%E5%9F%BA%E7%A1%80.md#%E9%9A%90%E5%BC%8F%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2]
 # String
 
 ```java
