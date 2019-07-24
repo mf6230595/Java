@@ -74,3 +74,83 @@ System.out.println(x == y);         //false
 System.out.println(x.equals(y));        //true
 ```
 x == y结果是false的原因就是x和y分别创建了两个不同的变量分别引用各自的对象；x.equals(y)的结果为true的原因就是x和y所引用的对象值都是1
+
+# 关键字  
+## final  
+1.数据  
+声明数据为常量，可以编译时常量，也可以是在运行时被初始化后不能被改变的常量  
+- 对于基本类型，final使数值不变； 
+- 对于引用类型，final使引用不变，也就不能引用其他对象，但是被引用的本身变量是可以修改的；  
+```java
+final int x = 1;
+//x = 2       //cannot assign value to final variable 'x'
+```
+2.方法  
+声明方法不能被子类重写。  
+private方法隐式地被指定为final，如果子类中定义的方法和夫类中的一个private方法方法签名相同，此时子类的方法不是重写，而是定义了一个新的方法。  
+3.类  
+声明类不允许被继承。  
+## static  
+- 静态变量：又称为类变量，也就是说这个变量属于类的，类的所有实例都共享静态变量，可以直接通过类名来访问它。静态变量在内存中只存在一份。  
+- 实例变量：每创建一个实例就会产生一个实例变量，它与该实例同生共死。  
+```java
+public class A{
+    private int x;
+    private static int y;
+    
+    public void main(String[] args){
+        //int x = A.x       //Non-static field 'x' cannot be referenced from a static context
+        A a = new A();
+        int x = a.x;
+        int y = A.y     //y是静态变量，可以通过类名直接访问
+    }
+}
+```
+2.静态方法  
+静态方法在类加载的时候就存在了，它不依赖于任何实例，所有静态方法必须有实现，也就是说它不能是抽象方法。  
+静态方法只能调用静态变量
+```java
+public class A{
+    private int x;
+    private static int y;
+    
+    public static void func(){
+        //int a = x;        //Non-static field 'x' cannot be referenced from a static context
+        int b = y;
+    }
+}
+```
+3.静态语句块  
+静态语句块在类初始化的时候运行一次  
+```java
+public class A{
+    static{
+        System.out.println("abc");
+    }
+    public static void main(String[] args){
+        A a1 = new A();
+        A a2 = new A();
+    }
+}
+```
+```
+结果：abc
+```
+4.静态内部类  
+非静态内部类依赖于外部类的实例，而静态内部类不需要  
+```java
+
+
+```
+静态内部类不能访问外部类的非静态的变量和方法。  
+5.静态导包  
+在使用静态变量和方法时不用再指明 ClassName，从而简化代码，但可读性大大降低。  
+6.初始化顺序  
+静态变量和静态语句块优先于实例变量和普通语句块，静态变量和静态语句块的初始化顺序取决于他们在代码中的顺序  
+存在继承的情况下，初始化顺序为：  
+- 父类（静态变量、静态语句块）  
+- 子类（静态变量、静态语句块）
+- 父类（实例变量、普通语句块）
+- 父类（构造函数）
+- 子类（实例变量、普通语句块）
+- 子类（构造函数）
